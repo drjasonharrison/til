@@ -1,0 +1,160 @@
+﻿Different ways of running a script with sudo that lead to
+different outcomes if the script run another script
+with the root user vs with the real user.
+
+Eg, in a script run using sudo, you can call another script as root:
+./the-other-script.bash
+
+And you can call the other script as the real user:
+sudo -u $REAL_USER ./the-other-script.bash
+
+But if you call a script that needs sudo by using the real user, then that
+script will report an error/fail.
+
+
+sudo ./needs-sudo.bash
+- works if you do not call a script that needs sudo with the real user
+
+	Starting ./needs-sudo.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = jason
+REAL_USER = jason
+Calling needs-sudo-child.bash as 0
+Starting ./needs-sudo-child.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = jason
+REAL_USER = root
+Exiting ./needs-sudo-child.bash
+Calling needs-sudo-child.bash as jason
+Starting ./needs-sudo-child.bash
+I am not root!
+EFFECTIVE_USER_ID = 772207612
+SUDO_USER = root
+REAL_USER = jason
+Exiting ./needs-sudo-child.bash
+Exiting ./needs-sudo.bash
+
+
+sudo bash; ./needs-sudo.bash
+- works if you do not call a script that needs sudo with the real user
+
+	Starting ./needs-sudo.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = jason
+REAL_USER = jason
+Calling needs-sudo-child.bash as 0
+Starting ./needs-sudo-child.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = jason
+REAL_USER = root
+Exiting ./needs-sudo-child.bash
+Calling needs-sudo-child.bash as jason
+Starting ./needs-sudo-child.bash
+I am not root!
+EFFECTIVE_USER_ID = 772207612
+SUDO_USER = root
+REAL_USER = jason
+Exiting ./needs-sudo-child.bash
+Exiting ./needs-sudo.bash
+
+
+
+sudo bash; sudo ./needs-sudo.bash
+- works if you do call a script that needs sudo with the real user
+- unexpectedly leaves files owned by root in file system
+
+	Starting ./needs-sudo.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = root
+REAL_USER = root
+Calling needs-sudo-child.bash as 0
+Starting ./needs-sudo-child.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = root
+REAL_USER = root
+Exiting ./needs-sudo-child.bash
+Calling needs-sudo-child.bash as root
+Starting ./needs-sudo-child.bash
+I am root!
+EFFECTIVE_USER_ID = 0
+SUDO_USER = root
+REAL_USER = root
+Exiting ./needs-sudo-child.bash
+Exiting ./needs-sudo.bash
+
+
+________________
+
+
+needs-sudo.bash
+
+
+#!/bin/bash
+
+
+echo "Starting ${BASH_SOURCE[0]}"
+
+
+EFFECTIVE_USER_ID=$(id -u)
+if ! [ $EFFECTIVE_USER_ID = 0 ]; then
+        echo "I am not root!"
+else
+        echo "I am root!"
+fi
+
+
+echo "EFFECTIVE_USER_ID = $EFFECTIVE_USER_ID"
+echo "SUDO_USER = $SUDO_USER"
+
+
+if [ $SUDO_USER ]; then
+        REAL_USER=$SUDO_USER
+else
+        REAL_USER=$(whoami)
+fi
+
+
+echo "REAL_USER = $REAL_USER"
+
+
+echo "Calling needs-sudo-child.bash as $EFFECTIVE_USER_ID"
+./needs-sudo-child.bash
+
+
+echo "Calling needs-sudo-child.bash as $REAL_USER"
+sudo -u $REAL_USER ./needs-sudo-child.bash
+
+
+echo "Exiting ${BASH_SOURCE[0]}"
+
+
+________________
+
+
+needs-sudo-child.bash
+#!/bin/bash
+
+
+echo "Starting ${BASH_SOURCE[0]}"
+
+
+EFFECTIVE_USER_ID=$(id -u)
+if ! [ $EFFECTIVE_USER_ID = 0 ]; then
+        echo "I am not root!"
+else
+        echo "I am root!"
+fi
+
+
+echo "EFFECTIVE_USER_ID = $EFFECTIVE_USER_ID"
+echo "SUDO_USER = $SUDO_USER"
+echo "REAL_USER = $(whoami)"
+
+
+echo "Exiting ${BASH_SOURCE[0]}"
