@@ -1,0 +1,26 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: add-exif-data",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/python/add-exif-data.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "cwd": "${workspaceFolder}/python/"
+    },
+    {
+      "name": "Python: extract-exif-data-from-image",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/python/extract-exif-data-from-image.py",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "cwd": "${workspaceFolder}/python/"
+    }
+  ]
+}
