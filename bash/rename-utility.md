@@ -37,7 +37,13 @@ The central expression of this rename command will search for strings within fil
 rename 's/(stri|stra)ng/bang/' *.c
 ```
 
+## Add a suffix before the file extension
 
+Add the string "_432" after the filename, and before the file extension:
+
+```
+rename -n 's/(\w)\.(\w)/$1_432.$2/' *
+```
 
 ## Using translations with rename
 Source https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/
@@ -55,7 +61,7 @@ To force the filenames of all “.prg” files to uppercase, use this command:
 rename ‘y/a-z/A-Z/’ *.prg
 ```
 
-# man page for rename
+##  man page for rename
 
 ```
 Usage:
