@@ -1,26 +1,32 @@
 # The rename utility
 
+Use perl regex to rename files.
+
+(Perl 5 regex cheat sheet)[https://perlmaven.com/regex-cheat-sheet]
+
+## To add a prefix:
+
+```bash
+rename 's/^/prefix-48b02d182978-/' *.gmp
 ```
 
+## To remove "prefix-" from the beginning of a bunch of files:
 
-## To remove "passed-" from the beginning of a bunch of files:
-
-```
-rename -v  's/^passed-*//' passed*
+```bash
+rename -v  's/^prefix-*//' prefix*
 ```
 
 ## To remove ".bak" from the end of filenames:
 
+```bash
+rename 's/\.bak$//' *.bak
 ```
-rename 's/\e.bak$//' *.bak
-```
-
-
 
 ## To change the extension from .prog to .prg:
+
 Source https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/
 
-```
+```bash
 rename 's/.prog/.prg/' *.prog
 ```
 
@@ -30,10 +36,9 @@ Source https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/
 
 The central expression of this rename command will search for strings within filenames that have the character sequence “stri” or “stra” where those sequences are immediately followed by “ng”:
 
-- look for “string” and “strang”. The substitution term is “bang”.
+Look for “string” and “strang”. The substitution term is “bang”:
 
-
-```
+```bash
 rename 's/(stri|stra)ng/bang/' *.c
 ```
 
@@ -41,11 +46,12 @@ rename 's/(stri|stra)ng/bang/' *.c
 
 Add the string "_432" after the filename, and before the file extension:
 
-```
+```bash
 rename -n 's/(\w)\.(\w)/$1_432.$2/' *
 ```
 
 ## Using translations with rename
+
 Source https://www.howtogeek.com/423214/how-to-use-the-rename-command-on-linux/
 
 Using a y/ to start the pattern results in a translation rather than a substitution.
@@ -53,17 +59,19 @@ Using a y/ to start the pattern results in a translation rather than a substitut
 - The a-z term is a Perl expression that means all lowercase characters
 - The A-Z term represents all uppercase letters in the sequence from A to Z.
 
-The central expression in this command could be paraphrased as “if any of the lowercase letters from a to z are found in the filename, replace them with the corresponding characters from the sequence of uppercase characters from A to Z.”
+The central expression in this command could be paraphrased as “if any of the lowercase
+letters from a to z are found in  the filename, replace them with the corresponding
+characters from the sequence of uppercase characters from A to Z.”
 
 To force the filenames of all “.prg” files to uppercase, use this command:
 
-```
+```bash
 rename ‘y/a-z/A-Z/’ *.prg
 ```
 
-##  man page for rename
+## man page for rename
 
-```
+```bash
 Usage:
     rename [ -h|-m|-V ] [ -v ] [ -n ] [ -f ] [ -e|-E perlexpr]*|perlexpr
     [ files ]
