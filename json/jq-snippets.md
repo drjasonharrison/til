@@ -77,3 +77,13 @@ $ jq 'select(has("b"))|input_filename' -- *.json
 $ jq 'select(has("d"))|input_filename' -- *.json
 "file1.json"
 ```
+
+## extract multiple fields and convert to CSV:
+
+Put the fields to extract in `[...]` and pipe to `@csv`
+
+```bash
+jq -r "[.source.sourceName, .system.sourceID, .system.uuid, .source.beltWidth,
+ .source.beltLength, .configs.processor.z_clip_range[0],
+ .configs.processor.z_clip_range[1], input_filename] | @csv" -- *production*
+```
