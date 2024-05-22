@@ -1,0 +1,22 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Jason Harrison
+	email = jason@motionmetrics.com
+[cola]
+	spellcheck = false
+	textwidth = 75
+[core]
+	autocrlf = input
+	editor = code --wait
+[pull]
+	rebase = false
+[init]
+	defaultBranch = master
+[commit]
+	template = /home/jason/.gitmessage
+[diff]
+	algorithm = histogram
+[push]
+    autoSetupRemote = true
+[merge]
+    conflictStyle = diff3
