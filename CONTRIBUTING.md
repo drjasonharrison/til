@@ -12,10 +12,6 @@ Open a pull request for review.
 
 For help submitting, please review our [Git Commits for Non-Git Users](/GitCommitsForNonGitUsers.md) guide.
 
-After merging into master,
-[Buffer](https://bufferapp.com) a tweet from the
-[@upcase](https://twitter.com/upcase) account.
-
 
 ## Writing a good a TIL
 
