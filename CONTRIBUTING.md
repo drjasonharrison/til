@@ -1,11 +1,9 @@
 # Contributing
 
-When you learn something,
-add a Markdown file to
-this repo explaining it in concise terms.
-Place the file in a directory
-which best describes
-the content of the tip.
+When you learn something, add a Markdown file to this repo explaining it in concise terms.
+
+Place the file in a directory which best describes the content of the tip.
+
 Create a new directory if no existing one fits.
 
 Open a pull request for review.
@@ -15,8 +13,8 @@ For help submitting, please review our [Git Commits for Non-Git Users](/GitCommi
 
 ## Writing a good a TIL
 
-TIL's should be a focused and concise piece of knowledge that's interesting and
-worth sharing with others.
+TIL's should be a focused and concise piece of knowledge that's interesting and worth
+sharing with others.
 
 Here's some guidelines on how to write a great TIL:
 
