@@ -6,13 +6,13 @@ pattern.
 Remove all versions of docker images starting with "truck" without any / in the repository
 name:
 
-```
+```bash
 docker rmi $(docker images --filter=reference="truck*:*" --quiet)
 ```
 
 Remove all versions of docker images with a remote docker repo and / in the repository
 name and include the --force flag to make sure that images that are shared are removed:
 
-```
+```bash
 docker rmi --force $(docker images --filter=reference="*/truck*:*" --quiet)
 ```

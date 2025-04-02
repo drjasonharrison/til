@@ -2,7 +2,7 @@
 
 Today, I was trying to run the executable from a gem and got the following error:
 
-```
+```text
 This installation of RMagick was configured with ImageMagick 6.8.9 but
 ImageMagick 6.9.0-3 is in use. (RuntimeError)
 ```

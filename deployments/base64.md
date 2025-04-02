@@ -23,7 +23,7 @@ support `--ignore-garbage` like the GNU Coreutils version of base64.
 
 Decode:
 
-```
+```bash
 echo $NPMRC_base64 | base64 -d > .npmrc
 echo $ENV_QC_I2LStaging_base64 | base64 -d > ./.env
 echo $TASK_DEFINITION_base64 | base64 -d > task-definition.json
@@ -52,8 +52,6 @@ fi
 ```
 
 
-
-
 ## A script to copy the encoded file to the clipboard (if possible)
 
 ```bash
@@ -70,7 +68,6 @@ function print_clipboard_message {
     ECHO "I2L-Staging or I2L-Production as \"${OUTPUT_VARIABLE}\""
 }
 
-
 function print_open_file_copy_paste_message {
     OUTPUT_VARIABLE="$1"
     OUTPUT_FILENAME="$2"
@@ -81,7 +78,6 @@ function print_open_file_copy_paste_message {
     ECHO "Repository settings->Deployments. Under the deployment"
     ECHO "I2L-Staging or I2L-Production as \"${OUTPUT_VARIABLE}\""
 }
-
 
 function copy_output_to_clipboard {
     if (( ! CREATE_ENV_FILE )); then

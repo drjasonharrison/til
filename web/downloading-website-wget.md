@@ -35,7 +35,7 @@ wget --continue python.motionmetrics.net/packages/torch-2.0.1+cu118-cp310-cp310-
 
 ## Copyright
 
-```
+```text
 Copyright (c) 1996-2011, 2015, 2018 Free Software Foundation, Inc.
 
 Permission is granted to copy, distribute and/or modify this document under the terms of the

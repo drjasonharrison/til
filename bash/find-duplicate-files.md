@@ -1,11 +1,11 @@
 # Find duplicate files
 
 
-## Brute force, without installing any packages
+## Find and md5sum: Brute force, without installing any packages
 
 From https://unix.stackexchange.com/a/277707/249782
 
-```
+```bash
 find . ! -empty -type f -exec md5sum {} + | sort | uniq -w32 -dD
 ```
 
@@ -18,17 +18,17 @@ Notes:
 - doesn't require installing anything
 
 
-## Using fdupes or fslint
+## fdupes
 
 From https://unix.stackexchange.com/a/277705/249782
 
 
-You can use fdupes. From man fdupes:
+You can use `fdupes`. From man `fdupes`:
 
     Searches the given path for duplicate files. Such files are found by comparing file sizes and MD5 signatures, followed by a byte-by-byte comparison.
 
 You can call it like `fdupes -r /path/to/dup/directory` and it will print out a list of dupes.
 
-Update
+## fslint
 
-You can give it try to fslint also. After setting up fslint, go to `cd /usr/share/fslint/fslint && ./fslint /path/to/directory`
+You can give it try to `fslint` also. After setting up `fslint`, go to `cd /usr/share/fslint/fslint && ./fslint /path/to/directory`

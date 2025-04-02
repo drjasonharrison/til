@@ -23,7 +23,7 @@ ALTER USER Schwart IDENTIFIED BY 'Schwart';
 
 Executing the file will print this:
 
-```
+```text
 Annette
 Warren
 Anthony

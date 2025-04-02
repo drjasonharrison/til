@@ -8,7 +8,7 @@ The best way is to use your old pal `git checkout`. Just make sure you're
 on the branch you want to bring the file into and then checkout the file
 from its source branch. Here's the syntax.
 
-```
+```bash
 $ git checkout my-awesome-source-branch the/path/to/yourfile.rad
 ```
 

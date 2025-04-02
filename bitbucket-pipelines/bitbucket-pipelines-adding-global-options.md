@@ -11,7 +11,7 @@ Order of operations:
 
 1. remove
 
-    ```
+    ```bash
     grep -v -e " size: 2x" \
         -e "size: 4x" \
         -e " cloud:" \
@@ -22,13 +22,13 @@ Order of operations:
 
 2. compare original and "clean" file:
 
-    ```
+    ```bash
     diff --side-by-side bitbucket-pipelines.yml bp.yml
     ```
 
 3. Add before the "definitions:" key the contents of `options.yml`
 
-    ```
+    ```yaml
     options:
       size: 4x # Quadruple resources available for this step.
       runtime:
@@ -38,13 +38,13 @@ Order of operations:
 
     using sed:
 
-    ```
+    ```bash
     sed '/^definitions:$/e cat options.yml' bp.yml > bp2.yml
     ```
 
 4. compare original and final version of the pipeline file:
 
-    ```
+    ```bash
     diff --side-by-side bitbucket-pipelines.yml bp2.yml
     ```
 

@@ -16,7 +16,7 @@ def append_to(element, to=[]):
 
 If everything was okay, you would expect the following behavior:
 
-```
+```python
 my_list = append_to(12)
 print my_list
 
@@ -24,14 +24,14 @@ my_other_list = append_to(42)
 print my_other_list
 ```
 
-```
+```python
 [12]
 [42]
 ```
 
 But what you get instead is:
 
-```
+```python
 [12]
 [12, 42]
 ```

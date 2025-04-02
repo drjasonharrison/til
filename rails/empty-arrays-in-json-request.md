@@ -12,7 +12,7 @@ The URL encoded representation of
 
 would be
 
-```
+```http
 ?tags[]=foo&tags[]=bar
 ```
 
@@ -34,7 +34,7 @@ put "/api/v1/post/1", {
 
 would be invalidly encoded as:
 
-```
+```http
 ?tags[]=
 ```
 

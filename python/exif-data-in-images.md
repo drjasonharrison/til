@@ -53,7 +53,7 @@ as a list of tags and values:
 exiftool -All image_mod.jpg
 ```
 
-```
+```text
 ExifTool Version Number         : 10.80
 File Name                       : image_mod.jpg
 Directory                       : .

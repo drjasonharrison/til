@@ -2,7 +2,7 @@
 
 https://github.com/koalaman/shellcheck/issues/2880
 
-```
+```bash
 #!/usr/bin/env bash
 
 function foo()
