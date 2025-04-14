@@ -1,6 +1,6 @@
-# VSCode combining Code Spell Checker Dictionaries
+# VS Code Spell Checker: Combining Dictionaries
 
-## The Code Spell Checker
+## The VS Code Spell Checker
 
 * the cSpell extension for VSCode
 * Name: Code Spell Checker
@@ -30,7 +30,7 @@ for i in ../*/.vscode/settings.json ; do
 done | sort | uniq | sed "s/\"$/,/"
 ```
 
-That can be copied into the user VS Code Code Spell dictionary
+That can be copied into the user VS Code Spell Checker dictionary
 
 ## Counting duplicates
 
