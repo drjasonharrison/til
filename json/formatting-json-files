@@ -1,0 +1,16 @@
+# formatting json files: sorting by key name, indenting
+
+## all files in the current directory
+
+```bash
+for i in $(ls *.json); do
+    cp $i $i.bak
+    jq -S --indent 4 . $i > $i.tmp
+    mv $i.tmp $i
+done
+```
+
+After reviewing
+```bash
+rm *.bak
+```
