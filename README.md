@@ -1,5 +1,12 @@
 # Today I Learned
 
+This fork is https://github.com/drjasonharrison/til
+
+Forked from https://github.com/thoughtbot/til
+
+
+## Original README.md: Today I Learned
+
 We constantly learn new things. This is a repo to share those learnings.
 TILs are short Markdown documents (a few sentences + example code) explaining
 concepts, bits of syntax, commands, or tips we've recently learned.
